@@ -1,0 +1,71 @@
+.form-page {
+  display: grid;
+  place-items: start center;
+  padding: 1.5rem 16px 4rem;
+}
+
+@media (min-width: 760px) {
+  .form-page {
+    padding-top: 3rem;
+  }
+}
+
+.form-card {
+  width: 100%;
+  max-width: 30rem;
+  padding: 2rem 1.5rem;
+  border-radius: 1.75rem;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line), 0 30px 60px -40px rgb(0 0 0 / 0.4);
+}
+
+@media (min-width: 520px) {
+  .form-card {
+    padding: 2.5rem 2.25rem;
+  }
+}
+
+.form-card h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.form-card-intro {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
+}
+
+.form-card-error {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--k-red) 14%, transparent);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.form-card-submit {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.form-card-footer {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.form-card-footer a {
+  color: var(--ink);
+  font-weight: 700;
+}

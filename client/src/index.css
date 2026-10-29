@@ -1,0 +1,485 @@
+/* ---------- Tokens ---------- */
+:root {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+
+  --bg: #f5f4fa;
+  --surface: #ffffff;
+  --face: #ffffff;
+  --ink: #1a1825;
+  --muted: #6e6a80;
+  --line: #e5e2ef;
+  --track: #eeecf5;
+  --hover: rgb(26 24 37 / 0.05);
+  --accent: #ff4d5e;
+  --pill-ink: #1a1825;
+  --danger: #d1344a;
+
+  --k-red: #ff6b6b;
+  --k-orange: #ff9f43;
+  --k-yellow: #ffcd3c;
+  --k-green: #3dd68c;
+  --k-teal: #2ec4b6;
+  --k-sky: #4fb8f0;
+  --k-blue: #5b84ff;
+  --k-purple: #a48bfa;
+  --k-pink: #ff7eb9;
+  --k-slate: #9aa6b8;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0e0d14;
+  --surface: #17161f;
+  --face: #1d1c27;
+  --ink: #f5f3ff;
+  --muted: #a29eb6;
+  --line: #2d2b3a;
+  --track: #25232f;
+  --hover: rgb(245 243 255 / 0.06);
+  --accent: #ff5a6a;
+  --pill-ink: #17161f;
+  --danger: #ff8a8a;
+
+  --k-red: #ff8a8a;
+  --k-orange: #ffb870;
+  --k-yellow: #ffe07a;
+  --k-green: #7ce8b0;
+  --k-teal: #6ee0d4;
+  --k-sky: #8fd3ff;
+  --k-blue: #8fb0ff;
+  --k-purple: #c3b1ff;
+  --k-pink: #ffa3d1;
+  --k-slate: #b4bfce;
+
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button,
+select,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Legend spotlight: dim other categories on every calendar dial */
+.dial circle[data-cat] {
+  transition: opacity 0.3s;
+}
+
+.app[data-focus='work'] .dial circle[data-cat]:not([data-cat='work']),
+.app[data-focus='sleep'] .dial circle[data-cat]:not([data-cat='sleep']),
+.app[data-focus='eat'] .dial circle[data-cat]:not([data-cat='eat']),
+.app[data-focus='play'] .dial circle[data-cat]:not([data-cat='play']),
+.app[data-focus='other'] .dial circle[data-cat]:not([data-cat='other']) {
+  opacity: 0.12;
+}
+
+/* ---------- Shell ---------- */
+.app {
+  max-width: 1280px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  min-height: auto;
+  padding: 0.5rem 16px 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 760px) {
+  .app {
+    padding: 1rem 2rem 2.5rem;
+    gap: 1.75rem;
+  }
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--k-red) 14%, transparent);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.stage {
+  transition: opacity 0.2s;
+}
+
+.stage.is-loading {
+  opacity: 0.6;
+}
+
+.page-status {
+  padding: 4rem 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+a {
+  color: inherit;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar-settings {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-mark {
+  width: 1.75rem;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    grid-template-columns: 1fr auto;
+  }
+  .topbar > .segmented {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .topbar > .segmented .segmented-option {
+    justify-content: center;
+  }
+}
+
+.period {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.period-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-height: 1.1em;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.period-text {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.period-year {
+  font-size: 0.34em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.period-nav {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.stage {
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Week ---------- */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .week-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .week-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Month ---------- */
+.month {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.month-weekdays,
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(0.15rem, 1.2vw, 0.9rem);
+}
+
+.month-weekdays {
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Year ---------- */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .year-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .year-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.25rem 2.5rem;
+  }
+}
+
+.year-month-name {
+  margin: 0 0 0.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.year-month-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.year-month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+/* ---------- Day focus (full-screen clock) ---------- */
+.focus {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 16px 2rem;
+}
+
+.focus-clock {
+  width: min(100%, 640px);
+  margin: 0 auto;
+}
+
+@media (min-width: 1000px) {
+  .focus {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: center;
+    min-height: calc(100dvh - 6rem);
+    padding: 0 2rem 2rem;
+    gap: 3rem;
+  }
+  .focus-clock {
+    width: min(100%, calc(100dvh - 8rem), 780px);
+  }
+}
+
+.focus-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.focus-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 1.5rem;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.focus-hint p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.focus-hint strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.focus-list header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.focus-list h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.focus-list header span {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.focus-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.focus-list li button {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.6rem;
+  border: 0;
+  border-radius: 0.85rem;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.focus-list li button:hover,
+.focus-list li button.is-active {
+  background: var(--hover);
+}
+
+.focus-swatch {
+  width: 1.6rem;
+  height: 0.75rem;
+  border-radius: 999px;
+}
+
+.focus-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.focus-time {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.focus-empty {
+  margin: 0;
+  padding: 0.75rem 0.6rem;
+  color: var(--muted);
+}
+
+.focus-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

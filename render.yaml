@@ -1,0 +1,23 @@
+# Render Blueprint for the clock it API.
+# Render → New → Blueprint → pick this repo. You'll be asked for MONGODB_URI only.
+services:
+  - type: web
+    name: clock-it-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # secret: entered in the Render dashboard, never committed
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_ORIGIN
+        value: https://aarya-2525.github.io

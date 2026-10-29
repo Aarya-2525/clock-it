@@ -1,0 +1,97 @@
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.day .dial svg {
+  pointer-events: none;
+}
+
+/* Week: a card with header, dial, total */
+.day--card {
+  gap: 0.9rem;
+  padding: 1rem 0.9rem 0.95rem;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+  border-radius: 1.25rem;
+  transition: box-shadow 0.25s;
+}
+
+.day--card:hover {
+  box-shadow: 0 0 0 1px var(--line), 0 12px 30px -16px rgb(0 0 0 / 0.25);
+}
+
+.day-head {
+  display: flex;
+  align-self: stretch;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.day-weekday {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.day--card .day-number {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.day--card.is-today .day-number {
+  background: var(--accent);
+  color: #fff;
+}
+
+.day-meta {
+  align-self: stretch;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: left;
+}
+
+/* Month: dial with the date inside */
+.day--mini {
+  padding: 0.2rem;
+}
+
+.day--mini .day-number {
+  font-size: clamp(0.75rem, 1.7vw, 1rem);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.day--mini.is-today .day-number {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.day.is-outside {
+  opacity: 0.28;
+}
+
+/* Year: just the dial */
+.day--micro {
+  border-radius: 50%;
+}
+
+.day--micro.is-today {
+  box-shadow: 0 0 0 1.5px var(--bg), 0 0 0 3px var(--accent);
+}

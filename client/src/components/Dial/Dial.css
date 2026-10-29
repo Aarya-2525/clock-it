@@ -1,0 +1,29 @@
+.dial {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.dial svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dial-track {
+  stroke: var(--track);
+}
+
+.dial-now {
+  fill: var(--accent);
+}
+
+.dial-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  text-align: center;
+}

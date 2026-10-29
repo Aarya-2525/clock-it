@@ -1,0 +1,67 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn--lg {
+  height: 3rem;
+  font-size: 1rem;
+}
+
+.btn--icon {
+  width: 2.5rem;
+  padding: 0;
+}
+
+.btn--lg.btn--icon {
+  width: 3rem;
+}
+
+.btn--ghost:hover {
+  background: var(--hover);
+}
+
+.btn--outline {
+  border-color: var(--line);
+}
+
+.btn--outline:hover {
+  background: var(--hover);
+}
+
+.btn--solid {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn--solid:hover {
+  opacity: 0.88;
+}
+
+.btn--quiet {
+  color: var(--muted);
+}
+
+.btn--quiet:hover {
+  color: var(--ink);
+  background: var(--hover);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

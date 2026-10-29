@@ -1,0 +1,158 @@
+.orbit-clock {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: crosshair;
+}
+
+.orbit-guide {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+}
+
+.orbit-track {
+  fill: none;
+  stroke: var(--track);
+  stroke-width: 10;
+}
+
+.orbit-track-block {
+  fill: none;
+  stroke-width: 10;
+  transition: opacity 0.25s;
+}
+
+.orbit-face {
+  fill: var(--face);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.orbit-wedge {
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.orbit-numbers {
+  pointer-events: none;
+}
+
+.orbit-numbers text {
+  fill: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.orbit-numbers text.major {
+  fill: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.orbit-numbers .orbit-meridiem {
+  fill: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.orbit-numbers .tick {
+  stroke: var(--muted);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+.orbit-range {
+  fill: none;
+  stroke-width: 10;
+}
+
+.orbit-handle {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.hand-hour {
+  stroke: var(--ink);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.hand-accent {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.hand-hub {
+  fill: var(--accent);
+  stroke: var(--face);
+  stroke-width: 2;
+}
+
+.orbit-readout text {
+  paint-order: stroke;
+  stroke: var(--face);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+
+.readout-main {
+  fill: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.readout-caption {
+  fill: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.orbit-pill {
+  cursor: pointer;
+  outline: none;
+}
+
+.orbit-pill path {
+  transition: stroke-width 0.2s;
+}
+
+.orbit-pill:hover path,
+.orbit-pill.is-selected path {
+  stroke-width: 32px;
+}
+
+.orbit-pill:focus-visible path {
+  stroke-width: 32px;
+  filter: drop-shadow(0 0 0 var(--ink)) drop-shadow(0 0 3px var(--ink));
+}
+
+.orbit-pill-label {
+  fill: var(--pill-ink);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.orbit-clock.is-readonly,
+.orbit-clock.is-readonly .orbit-pill {
+  cursor: default;
+}
+
+.orbit-clock.is-readonly .orbit-pill:hover path {
+  stroke-width: 28px;
+}

@@ -1,0 +1,40 @@
+.timefield {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.timefield label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.timefield input {
+  width: 100%;
+  height: 2.9rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.timefield input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.timefield.is-invalid input {
+  border-color: var(--k-red);
+}
+
+.timefield-error {
+  font-size: 0.8rem;
+  color: var(--k-red);
+}

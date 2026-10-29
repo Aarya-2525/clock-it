@@ -1,0 +1,165 @@
+.home {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+@media (min-width: 760px) {
+  .home {
+    padding: 0 2rem 5rem;
+  }
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+    min-height: calc(100dvh - 7rem);
+  }
+}
+
+.hero-kicker {
+  margin: 0 0 1rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 6.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.hero-lede {
+  max-width: 34rem;
+  margin: 1.5rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 3.1rem;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
+}
+
+.cta:active {
+  transform: scale(0.97);
+}
+
+.cta--solid {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.cta--solid:hover {
+  opacity: 0.88;
+}
+
+.cta--outline {
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.cta--outline:hover {
+  background: var(--hover);
+}
+
+.hero-clock {
+  width: min(100%, 620px);
+  margin: 0 auto;
+}
+
+.home h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 760px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.feature h3,
+.steps h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.feature p,
+.steps p {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.steps ol {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+@media (min-width: 760px) {
+  .steps ol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.steps li {
+  counter-increment: step;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+}
+
+.steps li::before {
+  content: counter(step);
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--muted);
+}
